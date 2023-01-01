@@ -1,3 +1,4 @@
+from prometheus_client import start_http_server
 import http.server
 
 class HandleRequest(http.server.BaseHTTPRequestHandler):
@@ -10,5 +11,6 @@ class HandleRequest(http.server.BaseHTTPRequestHandler):
         self.wfile.close
 
 if __name__ == "__main__":
+    start_http_server(5001)
     server = http.server.HTTPServer(('localhost',5000), HandleRequest)
     server.serve_forever()
